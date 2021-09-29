@@ -1,0 +1,20 @@
+version: '3.1'
+
+networks:
+  alphabet-telegram-network:
+    external:
+      name: alphabet-telegram-network
+
+services:
+  alphabet-telegram-bot:
+    container_name: "alphabet-telegram-bot"
+    image: golang:1.17.1-alpine
+    volumes:
+      - .:/go/bot
+    working_dir: /go/bot
+    command: go run bot.go
+    environment:
+      - TGTOKEN=${TGTOKEN}
+      - BOTNAME=${BOTNAME}
+    networks:
+      - alphabet-telegram-network
