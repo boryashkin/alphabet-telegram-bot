@@ -21,7 +21,7 @@ func main() {
 
 	daemon := Daemon{bot: bot}
 	dm := NewDelayMessage()
-	rand.Seed(16000000000) //random number
+	rand.Seed(time.Now().UnixNano())
 	//bot.Debug = false
 
 	log.Printf("Authorized on account %s", bot.Self.UserName)
